@@ -1,0 +1,21 @@
+.modalBox {
+  height: auto;
+}
+
+.modalImage {
+  width: 100%;
+  height: 100%;
+  margin-bottom: 8px;
+  object-fit: cover;
+}
+
+.modalImageInfo {
+  display: flex;
+  justify-content: space-between;
+}
+
+.infoItem {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}

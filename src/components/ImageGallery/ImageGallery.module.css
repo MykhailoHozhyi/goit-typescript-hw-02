@@ -1,0 +1,16 @@
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px;
+  margin-bottom: 16px;
+}
+
+.galleryCard {
+  width: 360px;
+  height: 240px;
+}
+
+.galleryCard:hover {
+  cursor: pointer;
+}

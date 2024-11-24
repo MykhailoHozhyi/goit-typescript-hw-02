@@ -1,0 +1,30 @@
+.header {
+  background-color: rgb(13, 82, 212);
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.form {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.searchInput {
+  width: 400px;
+  border-color: transparent;
+  border-radius: 4px;
+  padding: 0 8px;
+}
+
+.searchBtn {
+  background-color: white;
+  border-color: transparent;
+  border-radius: 4px;
+  color: rgb(13, 82, 212);
+  transition: backround-color 250ms linear;
+}
+
+.searchBtn:hover {
+  background-color: aliceblue;
+}
