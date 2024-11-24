@@ -7,18 +7,19 @@ import Loader from '../Loader/Loader';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
 import LoadMoreBtn from '../LoadMoreBtn/LoadMoreBtn';
 import ImageModal from '../ImageModal/ImageModal';
+import { Image } from '../../types';
 
 export default function App() {
-  const [gallery, setGallery] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [searchValue, setSearchValue] = useState('');
-  const [totalPages, setTotalPages] = useState(0);
-  const [isOpenModal, setIsOpenModal] = useState(false);
-  const [modalData, setModalData] = useState({});
+  const [gallery, setGallery] = useState<Image[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<boolean>(false);
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [searchValue, setSearchValue] = useState<string>('');
+  const [totalPages, setTotalPages] = useState<number>(0);
+  const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
+  const [modalData, setModalData] = useState<Partial<Image>>({});
 
-  async function handleSearch(searchValue, page = 1) {
+  async function handleSearch(searchValue: string, page = 1): Promise<void> {
     try {
       setError(false);
       setLoading(true);
@@ -29,7 +30,7 @@ export default function App() {
       }
 
       const galleryData = await fetchGallery(searchValue, page);
-      const galleryResults = galleryData.results;
+      const galleryResults: Image[] = galleryData.results;
       setTotalPages(galleryData.total_pages);
 
       if (page > 1) {
@@ -48,12 +49,12 @@ export default function App() {
     }
   }
 
-  function onOpenModal(imageData) {
+  function onOpenModal(imageData: Image): void {
     setIsOpenModal(true);
     setModalData(imageData);
   }
 
-  function onCloseModal() {
+  function onCloseModal(): void {
     setIsOpenModal(false);
   }
 

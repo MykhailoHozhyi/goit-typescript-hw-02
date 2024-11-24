@@ -1,7 +1,13 @@
+import { Image } from '../../types';
 import css from './ImageCard.module.css';
 
-export default function ImageCard({ image, onOpenModal }) {
-  function onClickImage() {
+type ImageCardProps = {
+  image: Image;
+  onOpenModal: (image: Image) => void;
+}
+
+export default function ImageCard({ image, onOpenModal }: ImageCardProps) {
+  function onClickImage(): void {
     onOpenModal(image);
   }
 

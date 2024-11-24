@@ -3,6 +3,7 @@ import { BiLike } from 'react-icons/bi';
 import { FaInstagram } from 'react-icons/fa';
 import { MdDescription } from 'react-icons/md';
 import Modal from 'react-modal';
+import { Image } from '../../types';
 
 const customStyles = {
   content: {
@@ -20,16 +21,22 @@ const customStyles = {
 
 Modal.setAppElement('#root');
 
-export default function ImageModal({ isOpenModal, onCloseModal, modalData }) {
-  function onCloseImage() {
+type ImageModalProps = {
+  isOpenModal: boolean;
+  onCloseModal: () => void;
+  modalData: Partial<Image>;
+}
+
+export default function ImageModal({ isOpenModal, onCloseModal, modalData }: ImageModalProps) {
+  function onCloseImage(): void {
     onCloseModal();
   }
 
-  function afterOpenModal() {
+  function afterOpenModal(): void {
     document.body.style.overflow = 'hidden';
   }
 
-  function afterCloseModal() {
+  function afterCloseModal(): void {
     document.body.style.overflow = 'auto';
   }
 
@@ -44,7 +51,7 @@ export default function ImageModal({ isOpenModal, onCloseModal, modalData }) {
       <div className={css.modalBox}>
         <img
           className={css.modalImage}
-          src={modalData.urls.regular}
+          src={modalData.urls?.regular}
           alt={modalData.alt_description}
         />
         <ul className={css.modalImageInfo}>
@@ -52,7 +59,7 @@ export default function ImageModal({ isOpenModal, onCloseModal, modalData }) {
             <div>
               <FaInstagram size={36} />
             </div>
-            <p>{modalData.user.instagram_username}</p>
+            <p>{modalData.user?.instagram_username || 'No instagram'}</p>
           </li>
           <li className={css.infoItem}>
             <div>

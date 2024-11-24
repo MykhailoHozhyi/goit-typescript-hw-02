@@ -1,7 +1,8 @@
+import { ReactElement } from 'react';
 import css from './Loader.module.css';
 import { Triangle } from 'react-loader-spinner';
 
-export default function Loader() {
+export default function Loader(): ReactElement {
   return (
     <div className={css.loader}>
       <Triangle
